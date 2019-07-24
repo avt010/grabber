@@ -23,15 +23,6 @@ import java.util.Map;
 @RequestMapping("api/v0/flyghts")
 public class FlyghtsController {
 	
-	//@Autowired
-	//FlyghtsService flyghtsService;
-	
-	@Autowired
-	PersonsRepository personsRepository;
-	
-	@Autowired
-	PassportsRepository passportsRepository;
-	
 	@Autowired
 	FlyghtsRepository flyghtsRepository;
 	
@@ -47,36 +38,6 @@ public class FlyghtsController {
 	@Autowired
 	CategorysOfTransportRepository categorysOfTransportRepository;
 	
-	@Autowired
-	private AuthorsRepository authorsRepository;
-	
-	//@Autowired
-	//private FlyghtsSpecification flyghtsSpecification;
-	
-	@Autowired
-	private PagesRepository pagesRepository;
-	
-	@Autowired
-	private BooksService booksService;
-	
-	/*@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ResponseEntity<List<Flyghts>> getFlyghts(@PathVariable("id") Long idOfFlyght,
-												@RequestParam("from") String from,
-												@RequestParam("to") String to,
-												@RequestParam("dateToDeparture") Date dateToDeparture,
-												@RequestParam("dateToArival") Date dateToArival,
-												@RequestParam("ticket") Integer ticket)
-	{
-		return new ResponseEntity<List<Flyghts>>(flyghtsService.getAllFlyghts(from, to, dateToDeparture, dateToArival, ticket), HttpStatus.OK);
-	}*/
-	
-	/*@RequestMapping(value = "", method = RequestMethod.GET)
-	public ResponseEntity<String> getFlyghts() {
-		Book book = new Book();
-		booksService.saveBook(book);
-		return new ResponseEntity<String>("0", HttpStatus.OK);
-	}*/
-	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<Flyghts>> getAllFlyghts(@RequestParam(value = "number", required = false) String number,
 														@RequestParam(value = "date", required = false) Date date,
@@ -85,7 +46,6 @@ public class FlyghtsController {
 		HashMap<String, Object> filter = new HashMap<String, Object>();
 		filter.put("numberOfFlyght", number);
 		filter.put("dateToDeparture", date);
-		//filter.put("to", to);
 		return new ResponseEntity<List<Flyghts>>(flyghtsRepository.findAll(FlyghtsSpecification.flyghtsByName(filter)), HttpStatus.OK);
 	}
 }
