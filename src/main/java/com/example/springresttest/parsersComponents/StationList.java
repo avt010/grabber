@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.example.springresttest.models.Station;
-
 @Component
 public class StationList {
 	

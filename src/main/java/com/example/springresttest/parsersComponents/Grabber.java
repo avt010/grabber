@@ -1,43 +1,22 @@
 package com.example.springresttest.parsersComponents;
 
-import com.example.springresttest.entity.CategorysOfStation;
-import com.example.springresttest.entity.CategorysOfTransport;
-import com.example.springresttest.entity.Flyghts;
-import com.example.springresttest.entity.Stations;
-import com.example.springresttest.entity.Stops;
-import com.example.springresttest.entity.Threads;
-import com.example.springresttest.models.Carrier;
 import com.example.springresttest.models.CarrierWrapper;
-import com.example.springresttest.models.FlyghtsResponseJsonObject;
 import com.example.springresttest.models.Segment;
-import com.example.springresttest.models.Station;
 import com.example.springresttest.models.StopJson;
-import com.example.springresttest.models.ThreadOfFlyghts;
 import com.example.springresttest.models.TimetableJson;
 import com.example.springresttest.parsersComponents.GrabberConfig;
-import com.example.springresttest.repository.*;
 import com.example.springresttest.services.CarriersService;
-import com.example.springresttest.services.FlyghtsService;
 import com.example.springresttest.services.StopsService;
 import com.example.springresttest.services.TimetablesService;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.ConnectException;
-import java.sql.Date;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -98,12 +77,15 @@ public class Grabber {
 			for (String station : stationList.getStations()) {
 				Uri uri = uriList.getUri("timetable");
 				uri.addParameter("station", station);
-				timetable = restTemplate.getForObject(uriList.getUri("timetable").getUriAsString(), TimetableJson.class);
+				//System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+				uri.addParameter("date",  new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+				timetable = restTemplate.getForObject(uri.getUriAsString(), TimetableJson.class);
 				//System.out.println(result);
 				//ResponseParser responseFlyghtsParser = new ResponseFlyghtsParser();
 				//responseFlyghtsParser.parseJson(result);
 				System.out.println(timetable.toString());
 				uri.delParameter("station");
+				//uri.delParameter("date");
 				uriList.updateUri("timetable", uri);
 				//System.out.println(0);
 				data.addTimetable(timetable);
@@ -211,32 +193,4 @@ public class Grabber {
 		carriersService.saveCarriers();
 		return;
 	}
-	
-	/*private void get() {
-		try {
-			DefaultHttpClient httpClient = new DefaultHttpClient();
-			HttpGet getRequest = new HttpGet(
-				"http://localhost:8080/RESTfulExample/json/product/get");
-			getRequest.addHeader("accept", "application/json");
-			HttpResponse response = httpClient.execute(getRequest);
-			if (response.getStatusLine().getStatusCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : "
-				   + response.getStatusLine().getStatusCode());
-			}
-			BufferedReader br = new BufferedReader(
-	                         new InputStreamReader((response.getEntity().getContent())));
-			String output;
-			System.out.println("Output from Server .... \n");
-			while ((output = br.readLine()) != null) {
-				System.out.println(output);
-			}
-
-			httpClient.getConnectionManager().shutdown();
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return;
-	}*/
 }

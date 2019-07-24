@@ -1,6 +1,5 @@
 package com.example.springresttest.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.springresttest.entity.Carriers;
 import com.example.springresttest.entity.CategorysOfTransport;
-import com.example.springresttest.entity.Flyghts;
 import com.example.springresttest.entity.SubCategorysOfTransport;
-import com.example.springresttest.entity.SubCatnegorysOfTransport;
 import com.example.springresttest.entity.Threads;
 import com.example.springresttest.entity.Transports;
 import com.example.springresttest.models.Carrier;
-import com.example.springresttest.models.Flyght;
 import com.example.springresttest.models.ThreadOfFlyghts;
 import com.example.springresttest.models.Transport;
 import com.example.springresttest.repository.*;
@@ -27,12 +23,6 @@ public class ThreadsService {
 	
 	@Autowired
 	private CategorysOfTransportService categorysOfTransportService;
-	
-	@Autowired
-	private SubCategorysOfTransportService subCategorysOfTransportService;
-	
-	@Autowired
-	private TransportsService transportsService;
 	
 	@Autowired
 	private CarriersRepository carriersRepository;

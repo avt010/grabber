@@ -1,7 +1,6 @@
 package com.example.springresttest.entity;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.*;
@@ -119,7 +118,7 @@ public class Threads {
 	}
 
 	public void setTransport(Transports transport) {
-		transport = transport;
+		this.transport = transport;
 	}
 
 	public SubCategorysOfTransport getSubCategoryOfTransport() {

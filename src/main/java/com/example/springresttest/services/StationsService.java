@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.springresttest.entity.CategorysOfStation;
 import com.example.springresttest.entity.CategorysOfTransport;
 import com.example.springresttest.entity.Stations;
-import com.example.springresttest.entity.Stops;
 import com.example.springresttest.models.Station;
 import com.example.springresttest.repository.CategorysOfStationRepository;
 import com.example.springresttest.repository.CategorysOfTransportRepository;
@@ -20,12 +19,6 @@ public class StationsService {
 	
 	@Autowired
 	private StationsRepository stationsRepository;
-	
-	@Autowired
-	private CategorysOfStationService categorysOfStationService;
-	
-	@Autowired
-	private CategorysOfTransportService categorysOfTransportService;
 	
 	@Autowired
 	private CategorysOfStationRepository categorysOfStationRepository;

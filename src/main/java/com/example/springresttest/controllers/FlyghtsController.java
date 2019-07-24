@@ -1,23 +1,18 @@
 package com.example.springresttest.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*; 
-import com.example.springresttest.components.*;
 import com.example.springresttest.entity.*;
 import com.example.springresttest.repository.*;
 import com.example.springresttest.repository.specifications.FlyghtsSpecification;
-//import com.example.springresttest.repository.PersonsRepository;
 import com.example.springresttest.services.*;
 
-//import com.example.springresttest.services.FlyghtsService;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-//import com.example.springresttest.entity.Flyghts;
 
 @RestController
 @RequestMapping("api/v0/flyghts")

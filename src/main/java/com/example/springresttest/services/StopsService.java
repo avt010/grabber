@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.springresttest.entity.CategorysOfStation;
 import com.example.springresttest.entity.CategorysOfTransport;
-import com.example.springresttest.entity.Flyghts;
 import com.example.springresttest.entity.Stations;
 import com.example.springresttest.entity.Stops;
 import com.example.springresttest.entity.Threads;
@@ -32,12 +31,6 @@ public class StopsService {
 	private ThreadsService threadsService;
 	
 	@Autowired
-	private TimetablesService timetablesService;
-	
-	@Autowired
-	private StationsService stationsService;
-	
-	@Autowired
 	private StationsRepository stationsRepository;
 	
 	@Autowired
@@ -45,9 +38,6 @@ public class StopsService {
 	
 	@Autowired
 	private CategorysOfTransportRepository categorysOfTransportRepository;
-	
-	@Autowired
-	private SubCategorysOfTransportRepository subCategorysOfTransportRepository;
 	
 	public void addStop(Stations station, Threads thread, Integer status) {
 		Stops stop = new Stops();

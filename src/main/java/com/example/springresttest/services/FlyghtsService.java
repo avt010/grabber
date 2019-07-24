@@ -2,18 +2,12 @@ package com.example.springresttest.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
 import java.util.Optional;
-import java.util.Date;
 import java.util.HashMap;
 
 import com.example.springresttest.entity.Flyghts;
-import com.example.springresttest.entity.Threads;
-import com.example.springresttest.models.FlyghtsResponseJsonObject;
 import com.example.springresttest.models.Segment;
-import com.example.springresttest.models.Station;
 import com.example.springresttest.models.ThreadOfFlyghts;
-import com.example.springresttest.parsersComponents.Data;
 import com.example.springresttest.repository.FlyghtsRepository;
 import com.example.springresttest.repository.specifications.FlyghtsSpecification;
 
@@ -22,12 +16,6 @@ public class FlyghtsService {
 	
 	@Autowired
 	private FlyghtsRepository flyghtsRepository;
-	
-	@Autowired
-	private StopsService stopsService;
-	
-	@Autowired
-	private StationsService stationsService;
 	
 	public Flyghts saveFlyghtAndGet(Segment segment) {
 		Flyghts flyght;
